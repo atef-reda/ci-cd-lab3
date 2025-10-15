@@ -1,5 +1,11 @@
 pipeline {
-    agent { label 'docker-agent' }
+    agent {
+        docker {
+            image 'amazon/aws-cli:2.15.57'
+            label 'docker-agent'
+            args '-v /tmp:/tmp'
+        }
+    }
 
     triggers {
         // Run every 1 hour
