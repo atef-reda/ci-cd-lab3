@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'amazon/aws-cli:2.15.57'
-            label 'docker-agent'
+            label 'docker-agent1'
             args '-v /tmp:/tmp'
         }
     }
