@@ -1,0 +1,35 @@
+pipeline {
+    agent { label 'aws-agent' }
+
+    triggers {
+        // Run every 1 hour
+        cron('H * * * *')
+    }
+
+    environment {
+        AWS_REGION = "eu-west-1"
+    }
+
+    stages {
+        stage('Checkout Repo') {
+            steps {
+                git branch: 'main', url: 'https://github.com/atef-reda/ci-cd-project.git'
+            }
+        }
+
+        stage('Run AWS Script') {
+            steps {
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'aws-creds'
+                ]]) {
+                    sh '''
+                        echo "Running AWS script..."
+                        chmod +x aws_script.sh
+                        ./aws_script.sh
+                    '''
+                }
+            }
+        }
+    }
+}
