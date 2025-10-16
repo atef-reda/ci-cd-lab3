@@ -1,0 +1,7 @@
+@Library('my-shared-lib') _
+
+dockerPipeline(
+    gitUrl: 'https://github.com/atef-reda/ci-cd-lab3.git',
+    imageName: 'atefreda30111/test-image:latest',
+    credentialsId: 'Github2'
+)
