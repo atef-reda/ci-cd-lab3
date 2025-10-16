@@ -1,10 +1,10 @@
 pipeline {
     agent { label 'aws-agent' }
 
-    triggers {
+  #  triggers {
         // Run every 1 minute
-        cron('* * * * *')
-    }
+      #  cron('H * * * *')
+#    }
 
     environment {
         AWS_DEFAULT_REGION = "eu-west-1"
