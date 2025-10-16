@@ -2,8 +2,8 @@ pipeline {
     agent { label 'aws-agent' }
 
     triggers {
-        // Run every 1 hour
-        cron('H * * * *')
+        // Run every 1 minute
+        cron('* * * * *')
     }
 
     environment {
